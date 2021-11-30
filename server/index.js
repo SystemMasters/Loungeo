@@ -109,7 +109,7 @@ app.post('/myoutfit/delete', (req, res) => {
 
 app.get('/reviews/', (req, res) => {
   const { page, sort, id } = req.query;
-  const url = `${URL}/reviews/?page=${page}&count=100&sort=${sort}&product_id=${id}`;
+  const url = `http://localhost:3005/api/reviews/?page=${page}&count=100&sort=${sort}&product_id=${id}`;
 
   axios.get(url, HEADERS)
     .then((response) => {
@@ -122,7 +122,7 @@ app.get('/reviews/', (req, res) => {
 
 app.get('/reviews/meta', (req, res) => {
   const { id } = req.query;
-  const url = `${URL}/reviews/meta/?product_id=${id}`;
+  const url = `http://localhost:3005/api/reviews/meta/?product_id=${id}`;
 
   axios.get(url, HEADERS)
     .then((response) => {

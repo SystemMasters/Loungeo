@@ -100,10 +100,11 @@ const RatingsAndReviewsModule = ({ mainProduct }) => {
 
   function fetchReviewData(apiPage = 1, sort = sortBy, typeChange = false) {
     utils.getReviews(mainProduct.id, apiPage, sort).then(({ data }) => {
+      console.log('r', data);
       if (typeChange) {
-        setReviewData(data.results);
+        setReviewData(data[0].results);
       } else {
-        setReviewData([...reviewData, ...data.results]);
+        setReviewData([...reviewData, ...data[0].results]);
       }
 
       if (reviewData.length === apiPage * 100) {
@@ -120,6 +121,7 @@ const RatingsAndReviewsModule = ({ mainProduct }) => {
 
   useEffect(() => {
     utils.getRating(mainProduct.id).then(({ data }) => {
+      console.log('u', data)
       setRatingData(data);
       setStarAverageData(starAverage(data.ratings));
     });

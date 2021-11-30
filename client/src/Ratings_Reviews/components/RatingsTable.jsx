@@ -9,7 +9,8 @@ const RatingsTable = ({ ratingData, starAverageData, filter }) => {
   const [selectedStar, setSelectedStar] = useState({ 1: false, 2: false, 3: false, 4: false, 5: false });
 
   function displayRecommendedPercent() {
-    return Math.floor((Number(ratingData.recommended.true) / starAverageData.total) * 100);
+    console.log('rec', ratingData);
+    return Math.floor((Number(ratingData.recommended[1]) / starAverageData.total) * 100);
   }
 
   function isSelected(star) {
